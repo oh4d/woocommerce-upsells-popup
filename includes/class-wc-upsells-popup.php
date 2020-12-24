@@ -33,11 +33,6 @@ class WC_UpSells_Popup
         $this->init_hooks();
     }
 
-    public function init()
-    {
-
-    }
-
     /**
      * @return WC_UpSells_Popup|null
      */
@@ -59,10 +54,7 @@ class WC_UpSells_Popup
         {
             $this->dependencies();
 
-            /*if (is_admin()) {
-                $this->admin();
-                // add_action('init', [$this, 'admin']);
-            }*/
+            $this->init();
         }
         catch (\Exception $e)
         {
@@ -75,7 +67,6 @@ class WC_UpSells_Popup
     public function includes()
     {
         include_once WC_UPSELLS_POPUP_ABSPATH . '/includes/class-wc-upsells-popup-post-types.php';
-        include_once WC_UPSELLS_POPUP_ABSPATH . '/includes/class-wc-upsells-popup-cart.php';
 
         if ($this->is_request( 'admin')) {
             include_once WC_UPSELLS_POPUP_ABSPATH . '/includes/admin/class-wc-upsells-popup-admin.php';
@@ -83,6 +74,20 @@ class WC_UpSells_Popup
 
         if ($this->is_request('frontend')) {
             $this->frontend_includes();
+        }
+    }
+
+    private function init()
+    {
+        new WC_UpSells_Popup_Post_Types();
+
+        if ($this->is_request( 'admin')) {
+            new WC_UpSells_Popup_Admin();
+        }
+
+        if ($this->is_request('frontend')) {
+            new WC_UpSells_Popup_Cart();
+            new WC_UpSells_Popup_Frontend();
         }
     }
 
@@ -113,11 +118,7 @@ class WC_UpSells_Popup
     public function dependencies()
     {
         if (!function_exists('WC')) {
-            throw new Exception(__('IL Payments requires WooCommerce to be activated', 'woocommerce-il-payment-gateways'));
-        }
-
-        if (version_compare(WC()->version,'2.5','<')) {
-            throw new Exception(__('IL Payments requires WooCommerce version 2.5 or greater', 'woocommerce-il-payment-gateways'));
+            throw new Exception(__('WC UpSells Popup requires WooCommerce to be activated', 'woocommerce-il-payment-gateways'));
         }
     }
 
@@ -128,6 +129,7 @@ class WC_UpSells_Popup
 
     private function frontend_includes()
     {
+        include_once WC_UPSELLS_POPUP_ABSPATH . '/includes/class-wc-upsells-popup-cart.php';
         include_once WC_UPSELLS_POPUP_ABSPATH . '/includes/class-wc-upsells-popup-frontend.php';
     }
 

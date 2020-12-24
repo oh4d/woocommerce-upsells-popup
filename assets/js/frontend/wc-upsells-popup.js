@@ -1,4 +1,5 @@
 jQuery(function($) {
+
     $(document.body).on('added_to_cart', function(e, data) {
 
         if (data['div.upsells-popup-checkout']) {
@@ -11,9 +12,9 @@ jQuery(function($) {
             return;
         }
 
-        $(document.body).append(data['div.upsells-popup']);
+        setTimeout(function() {
+            $(document.body).append(data['div.upsells-popup']);
 
-        $(document.body).one('wc_fragments_loaded', function() {
             var $modal = $('div.upsells-popup');
 
             $modal.one('show.bs.modal', function() {
@@ -27,9 +28,13 @@ jQuery(function($) {
                     config.rtl = true;
                 }
                 $modal.find('.owl-products').owlCarousel(config);
-            }).one('hidden.bs.modal', function() {
+            });
+
+            $modal.one('hidden.bs.modal', function() {
                 $modal.remove();
-            }).modal('show');
-        });
+            });
+
+            $modal.modal('show');
+        }, 500);
     });
 });

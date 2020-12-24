@@ -6,7 +6,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WC_UpSells_Popup_Post_Types
 {
-    public static function register_post_types()
+    public function __construct()
+    {
+        $this->init();
+    }
+
+    private function init()
+    {
+        add_action( 'init', array( $this, 'register_post_types' ), 5 );
+    }
+
+    public function register_post_types()
     {
         register_post_type('upsells_popup', array(
             'labels'              => array(
@@ -39,11 +49,4 @@ class WC_UpSells_Popup_Post_Types
             'show_in_menu' => 'wc-upsells-popup'
         ));
     }
-
-    public static function init()
-    {
-        add_action( 'init', array( __CLASS__, 'register_post_types' ), 5 );
-    }
 }
-
-WC_UpSells_Popup_Post_Types::init();

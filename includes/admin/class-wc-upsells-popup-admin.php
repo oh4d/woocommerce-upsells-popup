@@ -31,5 +31,3 @@ class WC_UpSells_Popup_Admin
         }
     }
 }
-
-return new WC_UpSells_Popup_Admin();

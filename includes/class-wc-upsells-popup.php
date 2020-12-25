@@ -118,7 +118,7 @@ class WC_UpSells_Popup
     public function dependencies()
     {
         if (!function_exists('WC')) {
-            throw new Exception(__('WC UpSells Popup requires WooCommerce to be activated', 'woocommerce-il-payment-gateways'));
+            throw new Exception(__('WC UpSells Popup requires WooCommerce to be activated', 'wc-upsells-popup'));
         }
     }
 

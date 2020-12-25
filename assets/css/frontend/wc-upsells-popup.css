@@ -1,0 +1,9 @@
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 900px !important;
+    }
+}
+
+.wc-checkout-btns {
+    margin-top: 10px;
+}

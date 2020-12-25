@@ -19,7 +19,7 @@ class WC_UpSells_Popup_Admin_Menus
 
     public function settings_page()
     {
-        echo 'test';
+        echo 'Under Development';
     }
 }
 

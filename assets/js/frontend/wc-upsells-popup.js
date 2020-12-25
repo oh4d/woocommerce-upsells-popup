@@ -21,13 +21,22 @@ jQuery(function($) {
                 if ($modal.find('img.lazy')) {
                     $modal.find('.lazy').lazy();
                 }
-                var config = {};
-                config.items = 1;
+                var $slider = $modal.find('.owl-products');
+
+                var config = $slider.data();
+
+                config.responsive = {
+                    '0': {items:2, margin:30},
+                    '992': {items:4, margin:30}
+                };
+
                 config.navText = [ '<i class="pe-7s-angle-left"></i>', '<i class="pe-7s-angle-right"></i>' ];
+
                 if ( $('body').hasClass('rtl') ) {
                     config.rtl = true;
                 }
-                $modal.find('.owl-products').owlCarousel(config);
+
+                $slider.owlCarousel(config);
             });
 
             $modal.one('hidden.bs.modal', function() {

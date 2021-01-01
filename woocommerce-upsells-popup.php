@@ -10,7 +10,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * WC tested up to: 4.8.0
  * Text Domain: woocommerce-upsells-popup
- * Domain Path: /languages/
+ * Domain Path: /languages
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

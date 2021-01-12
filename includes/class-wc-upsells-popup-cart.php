@@ -15,7 +15,9 @@ class WC_UpSells_Popup_Cart
 
     private function init()
     {
-        add_filter('woocommerce_add_to_cart_fragments', array($this, 'add_to_cart_fragments'));
+        add_action('woocommerce_ajax_added_to_cart', function() {
+            add_filter('woocommerce_add_to_cart_fragments', array($this, 'add_to_cart_fragments'));
+        });
     }
 
     public function add_to_cart_fragments($fragments)

@@ -10,8 +10,9 @@
 
 .upsells-popup.modal .modal-title {
     font-size: 22px;
+    font-weight: 600;
 }
 
 .modal-body .upsell-popup-content {
-    font-size: 18px;
+    font-size: 20px;
 }

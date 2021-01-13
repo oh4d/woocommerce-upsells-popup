@@ -4,6 +4,14 @@
     }
 }
 
-.wc-checkout-btns {
+.upsells-popup.modal .wc-checkout-btns {
     margin-top: 10px;
+}
+
+.upsells-popup.modal .modal-title {
+    font-size: 22px;
+}
+
+.modal-body .upsell-popup-content {
+    font-size: 18px;
 }
